@@ -6,22 +6,30 @@
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <div id="home-page">
-      <h1>Learn mental math</h1>
-      <div class="button">Get Started</div>
-      <div class="dropdown">or choose a level</div>
+    <div class="container">
+      <div id="home-page">
+        <h1>Learn mental math</h1>
+        <div class="button" id="get-started-button">Get Started</div>
+        <div class="dropdown">or choose a level:
+          <div id="dropdown-content">
+
+          </div>
+        </div>
+      </div>
+      <div id="level-page" class="hide">
+        <h1></h1> <!-- level 1 -->
+        <h2></h2> <!-- Adding Large Numbers -->
+        <p>Get 3 right to level up. You can do it.</p>
+      </div>
+      <div id="problem-page" class="hide">
+        <p></p> <!-- level 1 -->
+        <p></p> <!-- Adding Large Numbers -->
+        <p id="math-problem"></p>
+        <div id="answers"></div>
+      </div>
     </div>
-    <div id="level-page">
-      <h1></h1> <!-- level 1 -->
-      <h2></h2> <!-- Adding Large Numbers -->
-      <p>Get 3 right to level up. You can do it.</p>
-    </div>
-    <div id="problem-page">
-      <p></p> <!-- level 1 -->
-      <p></p> <!-- Adding Large Numbers -->
-      <p id="math-problem"></p>
-      <div id="answers"></div>
-    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
