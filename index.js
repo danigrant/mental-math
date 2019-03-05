@@ -54,15 +54,15 @@ async function renderProblemPage(level) {
   let problem = await generateProblem(level)
   $('#math-problem').text(problem.problem)
   let answers = await generateAnswers(level, problem.answer)
-  let multipleChoiceHTML = answers.map((answer, index) => `<div class="answer" id="answer-${i}">answer</div>`)
+  let multipleChoiceHTML = answers.map((answer, index) => `<div class="answer" id="answer-${index}">${answer}</div>`)
   $('#answers').html(multipleChoiceHTML)
 }
 
 async function generateProblem(level) {
   if (Levels[level].ruleId == 0) {
-    let a = Math.random() * (999 - 100) + 100
-    let b = Math.random() * (999 - 100) + 100
-    return { problem: `a + b`, answer: a + b }
+    let a = Math.floor(Math.random() * (500 - 100) + 100)
+    let b = Math.floor(Math.random() * (500 - 100) + 100)
+    return { problem: `${a} + ${b}`, answer: a + b }
   } else if (Levels[level].ruleId == 1) {
 
   }
@@ -70,8 +70,8 @@ async function generateProblem(level) {
 
 async function generateAnswers(level, answer) {
   if (Levels[level].ruleId == 0) {
-    let answerArray = [Math.random() * (2000 - 200) + 200, Math.random() * (2000 - 200) + 200, Math.random() * (2000 - 200) + 200, answer]
-    return answerArray.sort()
+    let answerArray = [Math.floor(Math.random() * (2000 - 200) + 200), Math.floor(Math.random() * (2000 - 200) + 200), Math.floor(Math.random() * (2000 - 200) + 200), answer]
+    return answerArray.sort((a, b) => a - b);
   } else if (Levels[level].ruleId == 1) {
 
   }
