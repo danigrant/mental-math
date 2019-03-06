@@ -5,13 +5,13 @@ let Levels = [
   {
     ruleName: 'Adding large numbers',
     ruleDescription: 'Round up the large numbers to a multiple of ten, then add the numbers and subtract what you initially added to round them up.',
-    ruleExample: '644 + 238\n\n= 650 + 240 - 8\n\n = 890 - 8\n\n = 882',
+    ruleExample: '644 + 238<br /><br />= 650 + 240 - 8<br /><br /> = 890 - 8<br /><br /> = 882',
     ruleId: 0
   },
   {
     ruleName: 'Multiplying two digit numbers by 11',
     ruleDescription: 'Add the two digit number and make that value the middle number. If the added value is two digits, add the first digit to the first digit of the two digit number and then put the second digit in the middle of the two digit number.',
-    ruleExample: '25 x 11\n\n = 2 (2+5) 5\n\n275\n\n78 x 11\n\n= (7+1) 5 8\n\n= 858',
+    ruleExample: '25 x 11<br /><br /> = 2 (2+5) 5<br /><br />275<br /><br />78 x 11<br /><br />= (7+1) 5 8<br /><br />= 858',
     ruleId: 1
   }
 ]
@@ -39,7 +39,8 @@ async function renderLevelPage(level) {
   $('#level-page').removeClass('hide')
 
   $('.level-name').text(`Level ${level + 1}`)
-  $('.level-desc').text(`${Levels[level].ruleDescription}`)
+  $('.level-desc').html(`${Levels[level].ruleDescription}`)
+  $('.level-example').html(`${Levels[level].ruleExample}`)
 
   // handle getStartedButton
   $('#start-button').on('click', () => {
@@ -54,8 +55,35 @@ async function renderProblemPage(level) {
   let problem = await generateProblem(level)
   $('#math-problem').text(problem.problem)
   let answers = await generateAnswers(level, problem.answer)
-  let multipleChoiceHTML = answers.map((answer, index) => `<div class="answer" id="answer-${index}">${answer}</div>`)
+  let multipleChoiceHTML = answers.map((answer, index) => `<div class="answer button" id="answer-${index}">${answer}</div>`)
   $('#answers').html(multipleChoiceHTML)
+
+  $('#answers div').on('click', (e) => {
+    if(e.target.innerText == problem.answer) {
+      // hooray!
+      $('#hooray').removeClass('hide')
+
+      setTimeout(function(){
+        $('#hooray').addClass('hide')
+
+        // up the score by one
+        score++
+
+        // if (score < 3) go to the next question
+        // if score == 3 go to the next level
+        if (score < 3) {
+          renderProblemPage(level)
+        } else if (score == 3) {
+          level++
+          renderLevelPage(level)
+        }
+      }, 600);
+    } else {
+      // gray out the wrong answer and show a wrong icon on it
+      $(e.target).removeClass('button')
+      $(e.target).addClass('greyedOut')
+    }
+  })
 }
 
 async function generateProblem(level) {
@@ -75,6 +103,10 @@ async function generateAnswers(level, answer) {
   } else if (Levels[level].ruleId == 1) {
 
   }
+}
+
+async function checkAnswer(level, problem) {
+
 }
 // TODO
 // every time someone solves a math problem update a counter
