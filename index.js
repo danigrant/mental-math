@@ -31,6 +31,12 @@ let Levels = [
     ruleDescription: 'Multiply it by 10, then subtract the original number',
     ruleExample: '220 x 9<br /><br />= 2200 - 220<br /><br />= 2000 - 20<br /><br />= 1,980',
     ruleId: 4
+  },
+  {
+    ruleName: 'Squaring two digit numbers',
+    ruleDescription: 'Add the last digit to the number to be squared. Put that value aside. Now square the last digit of the original two digit number. If it turns out to be a two digit value you will need to carry the first digit. Put them together and that is your answer.',
+    ruleExample: '14 squared<br /><br />= [14 + 4] & [4 squared]<br /><br />= 18 & 16 (but you need to carry the one)<br /><br />= [18 + 1] & 6<br /><br />= 196',
+    ruleId: '5'
   }
 ]
 
@@ -129,6 +135,10 @@ async function generateProblem(level) {
     // multiply a big number by 9
     let a = Math.floor(Math.random() * (99 - 10) + 10)
     return { problem: `${a} x 9`, answer: a * 9 }
+  } else if (Levels[level].ruleId == 5) {
+    // square two digit numbers
+    let a = Math.floor(Math.random() * (99 - 10) + 10)
+    return { problem: `${a} squared`, answer: a * a }
   }
 }
 
@@ -153,6 +163,10 @@ async function generateAnswers(level, answer) {
     // multiply a big number by 9
     let answerArray = [Math.floor(Math.random() * (800 - 90) + 90), Math.floor(Math.random() * (800 - 90) + 90), Math.floor(Math.random() * (800 - 90) + 90), answer]
     return answerArray.sort((a, b) => a - b);
+  } else if (Levels[level].ruleId == 5) {
+    // square two digit numbers
+    let answerArray = [Math.floor(Math.random() * (800 - 200) + 200), Math.floor(Math.random() * (800 - 200) + 200), Math.floor(Math.random() * (800 - 200) + 200), answer]
+    return answerArray.sort((a, b) => a - b);
   }
 }
 
@@ -163,3 +177,7 @@ async function checkAnswer(level, problem) {
 // every time someone solves a math problem update a counter
 // also every time someone solves a level
 // so i can know how many math problems we've done
+
+// save level to local storage and retrieve it on page load
+
+// if there are no more levels
