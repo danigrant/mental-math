@@ -51,13 +51,13 @@ async function renderHomePage() {
     $('#dropdown-content').html(optionsHTML)
 
     // handle dropdown objects
-    $('#dropdown-content div').on('click touchstart', (e) => {
+    $('#dropdown-content div').on('click touch', (e) => {
       level = parseInt(e.target.innerText.split(":")[0]) - 1
       renderLevelPage(level)
     })
 
     // handle getStartedButton
-    $('#get-started-button').on('click touchstart', () => {
+    $('#get-started-button').on('click touch', () => {
       renderLevelPage(level)
     })
 }
@@ -73,7 +73,7 @@ async function renderLevelPage(level) {
   $('.level-example').html(`${Levels[level].ruleExample}`)
 
   // handle getStartedButton
-  $('#start-button').on('click touchstart', () => {
+  $('#start-button').on('click touch', () => {
     renderProblemPage(level)
   })
 }
@@ -88,7 +88,7 @@ async function renderProblemPage(level) {
   let multipleChoiceHTML = answers.map((answer, index) => `<div class="answer button" id="answer-${index}">${answer}</div>`)
   $('#answers').html(multipleChoiceHTML)
 
-  $('#answers div').on('click touchstart', (e) => {
+  $('#answers div').on('click touch', (e) => {
     if(e.target.innerText == problem.answer) {
       // hooray!
       $('#hooray').removeClass('hide')
