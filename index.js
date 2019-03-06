@@ -23,14 +23,14 @@ let Levels = [
   {
     ruleName: 'Multiplying large numbers when one is even',
     ruleDescription: 'If one of the numbers is even, divide that number by half and then multiply the other number by 2. This should simplify the problem.',
-    ruleExample: '',
-    ruleId: 2
+    ruleExample: '20 x 240<br /><br />= 10 * 480<br /><br />= 4,800',
+    ruleId: 3
   },
   {
-    ruleName: '',
-    ruleDescription: '',
-    ruleExample: '',
-    ruleId: 2
+    ruleName: 'Multiply a big number by 9',
+    ruleDescription: 'Multiply it by 10, then subtract the original number',
+    ruleExample: '220 x 9<br /><br />= 2200 - 220<br /><br />= 2000 - 20<br /><br />= 1,980',
+    ruleId: 4
   }
 ]
 
@@ -85,10 +85,8 @@ async function renderProblemPage(level) {
 
       setTimeout(function(){
         $('#hooray').addClass('hide')
-
         // up the score by one
         score++
-
         // if (score < 3) go to the next question
         // if score == 3 go to the next level
         if (score < 3) {
@@ -121,6 +119,16 @@ async function generateProblem(level) {
     let a = Math.floor(Math.random() * 9)
     let b = parseInt(`${a}5`)
     return { problem: `${b} squared`, answer: b * b }
+  } else if (Levels[level].ruleId == 3) {
+    // multiply large numbers when one is even
+    let a = [10, 20, 40, 200, 400]
+    let b = a[Math.floor(Math.random() * 5)]
+    let c = Math.floor(Math.random() * (99 - 10) + 10)
+    return { problem: `${c} x ${b}`, answer: b * c }
+  } else if (Levels[level].ruleId == 4) {
+    // multiply a big number by 9
+    let a = Math.floor(Math.random() * (99 - 10) + 10)
+    return { problem: `${a} x 9`, answer: a * 9 }
   }
 }
 
@@ -136,6 +144,14 @@ async function generateAnswers(level, answer) {
   } else if (Levels[level].ruleId == 2) {
     // square a two digit number that ends in a 5
     let answerArray = [Math.floor(Math.random() * (9025 - 225) + 225), Math.floor(Math.random() * (9025 - 225) + 225), Math.floor(Math.random() * (9025 - 225) + 225), answer]
+    return answerArray.sort((a, b) => a - b);
+  } else if (Levels[level].ruleId == 3) {
+    // multiply large numbers when one is even
+    let answerArray = [Math.floor(Math.random() * (99 - 10) + 10), Math.floor(Math.random() * (99 - 10) + 10), Math.floor(Math.random() * (99 - 10) + 10), answer]
+    return answerArray.sort((a, b) => a - b);
+  } else if (Levels[level].ruleId == 4) {
+    // multiply a big number by 9
+    let answerArray = [Math.floor(Math.random() * (800 - 90) + 90), Math.floor(Math.random() * (800 - 90) + 90), Math.floor(Math.random() * (800 - 90) + 90), answer]
     return answerArray.sort((a, b) => a - b);
   }
 }
