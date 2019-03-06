@@ -147,7 +147,7 @@ async function generateAnswers(level, answer) {
     return answerArray.sort((a, b) => a - b);
   } else if (Levels[level].ruleId == 3) {
     // multiply large numbers when one is even
-    let answerArray = [Math.floor(Math.random() * (99 - 10) + 10), Math.floor(Math.random() * (99 - 10) + 10), Math.floor(Math.random() * (99 - 10) + 10), answer]
+    let answerArray = [Math.floor(Math.random() * (990 - 100) + 100), Math.floor(Math.random() * (990 - 100) + 100), Math.floor(Math.random() * (990 - 100) + 100), answer]
     return answerArray.sort((a, b) => a - b);
   } else if (Levels[level].ruleId == 4) {
     // multiply a big number by 9
