@@ -143,4 +143,8 @@ body {
   .answer {
     width: 90%;
   }
+
+  .dropdown {
+    display: none;
+  }
 }

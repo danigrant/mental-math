@@ -188,3 +188,5 @@ async function checkAnswer(level, problem) {
 // if there are no more levels
 
 // solve 3 correctly not just in general
+
+// get choose a level to work on mobile
