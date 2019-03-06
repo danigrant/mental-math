@@ -51,13 +51,13 @@ async function renderHomePage() {
     $('#dropdown-content').html(optionsHTML)
 
     // handle dropdown objects
-    $('#dropdown-content div').on('click', (e) => {
+    $('#dropdown-content div').on('click touchstart', (e) => {
       level = parseInt(e.target.innerText.split(":")[0]) - 1
       renderLevelPage(level)
     })
 
     // handle getStartedButton
-    $('#get-started-button').on('click', () => {
+    $('#get-started-button').on('click touchstart', () => {
       renderLevelPage(level)
     })
 }
@@ -73,7 +73,7 @@ async function renderLevelPage(level) {
   $('.level-example').html(`${Levels[level].ruleExample}`)
 
   // handle getStartedButton
-  $('#start-button').on('click', () => {
+  $('#start-button').on('click touchstart', () => {
     renderProblemPage(level)
   })
 }
@@ -88,7 +88,7 @@ async function renderProblemPage(level) {
   let multipleChoiceHTML = answers.map((answer, index) => `<div class="answer button" id="answer-${index}">${answer}</div>`)
   $('#answers').html(multipleChoiceHTML)
 
-  $('#answers div').on('click', (e) => {
+  $('#answers div').on('click touchstart', (e) => {
     if(e.target.innerText == problem.answer) {
       // hooray!
       $('#hooray').removeClass('hide')
@@ -186,3 +186,5 @@ async function checkAnswer(level, problem) {
 // save level to local storage and retrieve it on page load
 
 // if there are no more levels
+
+// solve 3 correctly not just in general
