@@ -3,12 +3,6 @@ let score = 0;
 
 let Levels = [
   {
-    ruleName: 'Adding large numbers',
-    ruleDescription: 'Round up the large numbers to a multiple of ten, then add the numbers and subtract what you initially added to round them up.',
-    ruleExample: '644 + 238<br /><br />= 650 + 240 - 8<br /><br /> = 890 - 8<br /><br /> = 882',
-    ruleId: 0
-  },
-  {
     ruleName: 'Multiplying two digit numbers by 11',
     ruleDescription: 'Add the two digit number and make that value the middle number. If the added value is two digits, add the first digit to the first digit of the two digit number and then put the second digit in the middle of the two digit number.',
     ruleExample: '25 x 11<br /><br /> = 2 (2+5) 5<br /><br />275<br /><br />78 x 11<br /><br />= (7+1) 5 8<br /><br />= 858',
@@ -37,6 +31,12 @@ let Levels = [
     ruleDescription: 'Add the last digit to the number to be squared. Put that value aside. Now square the last digit of the original two digit number. If it turns out to be a two digit value you will need to carry the first digit. Put them together and that is your answer.',
     ruleExample: '14 squared<br /><br />= [14 + 4] & [4 squared]<br /><br />= 18 & 16 (but you need to carry the one)<br /><br />= [18 + 1] & 6<br /><br />= 196',
     ruleId: '5'
+  },
+  {
+    ruleName: 'Adding large numbers',
+    ruleDescription: 'Round up the large numbers to a multiple of ten, then add the numbers and subtract what you initially added to round them up.',
+    ruleExample: '644 + 238<br /><br />= 650 + 240 - 8<br /><br /> = 890 - 8<br /><br /> = 882',
+    ruleId: 0
   }
 ]
 
