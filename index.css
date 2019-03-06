@@ -30,9 +30,15 @@ body {
 
 .container {
   padding: 1em;
-  width: 90%;
+  width: 60%;
   margin: 0 auto;
   margin-top: 30px;
+}
+
+.centered {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 #dropdown-content {
@@ -50,6 +56,15 @@ body {
 .greyedOut {
   background-color: #ccc;
 }
+
+.greyedOut:hover {
+  filter: brightness(100%) !important;
+}
+
+.greyedOut:active {
+  filter: brightness(100%) !important;
+}
+
 
 #home-page h1 {
   margin: 0 auto;
@@ -90,4 +105,38 @@ body {
 #dropdown-rule-0 {
   border-top: 3px solid black;
   margin-top: 1em;
+}
+
+#hooray {
+  width: 180px;
+}
+
+#math-problem {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.level-name {
+  /* font-size: 12px; */
+  font-weight: bold;
+}
+
+.level-desc {
+  color: #9e9e9e;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.answer {
+  width: 300px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+  .answer {
+    width: 90%;
+  }
 }

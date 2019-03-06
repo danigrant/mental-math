@@ -52,7 +52,7 @@ async function renderHomePage() {
 
     // handle dropdown objects
     $('#dropdown-content div').on('click', (e) => {
-      level = parseInt(e.target.innerText.split(":")[0])
+      level = parseInt(e.target.innerText.split(":")[0]) - 1
       renderLevelPage(level)
     })
 
@@ -68,7 +68,7 @@ async function renderLevelPage(level) {
   $('#level-page').removeClass('hide')
   score = 0
 
-  $('.level-name').text(`Level ${level + 1}`)
+  $('.level-name').text(`Level ${level + 1}: ${Levels[level].ruleName}`)
   $('.level-desc').html(`${Levels[level].ruleDescription}`)
   $('.level-example').html(`${Levels[level].ruleExample}`)
 
@@ -108,7 +108,6 @@ async function renderProblemPage(level) {
       }, 600);
     } else {
       // gray out the wrong answer and show a wrong icon on it
-      $(e.target).removeClass('button')
       $(e.target).addClass('greyedOut')
     }
   })
