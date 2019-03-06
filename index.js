@@ -13,6 +13,24 @@ let Levels = [
     ruleDescription: 'Add the two digit number and make that value the middle number. If the added value is two digits, add the first digit to the first digit of the two digit number and then put the second digit in the middle of the two digit number.',
     ruleExample: '25 x 11<br /><br /> = 2 (2+5) 5<br /><br />275<br /><br />78 x 11<br /><br />= (7+1) 5 8<br /><br />= 858',
     ruleId: 1
+  },
+  {
+    ruleName: 'Square a two digit number that ends in 5',
+    ruleDescription: 'Multiply the first digit of the two digit number by itself plus one. Then tack on 25 to the end.',
+    ruleExample: '45 squared = [4 x (4 + 1)] & 25<br /><br />[4 x (4 + 5)] = 20<br /><br />20 & 25 = 2025<br /><br />45 squared = 2025',
+    ruleId: 2
+  },
+  {
+    ruleName: 'Multiplying large numbers when one is even',
+    ruleDescription: 'If one of the numbers is even, divide that number by half and then multiply the other number by 2. This should simplify the problem.',
+    ruleExample: '',
+    ruleId: 2
+  },
+  {
+    ruleName: '',
+    ruleDescription: '',
+    ruleExample: '',
+    ruleId: 2
   }
 ]
 
@@ -36,7 +54,9 @@ async function renderHomePage() {
 
 async function renderLevelPage(level) {
   $('#home-page').addClass('hide')
+  $('#problem-page').addClass('hide')
   $('#level-page').removeClass('hide')
+  score = 0
 
   $('.level-name').text(`Level ${level + 1}`)
   $('.level-desc').html(`${Levels[level].ruleDescription}`)
@@ -88,20 +108,35 @@ async function renderProblemPage(level) {
 
 async function generateProblem(level) {
   if (Levels[level].ruleId == 0) {
+    // add large two digit numbers
     let a = Math.floor(Math.random() * (500 - 100) + 100)
     let b = Math.floor(Math.random() * (500 - 100) + 100)
     return { problem: `${a} + ${b}`, answer: a + b }
   } else if (Levels[level].ruleId == 1) {
-
+    // two digit number times 11
+    let a = Math.floor(Math.random() * (99 - 12) + 12)
+    return { problem: `${a} x 11`, answer: a * 11 }
+  } else if (Levels[level].ruleId == 2) {
+    // square a two digit number that ends in a 5
+    let a = Math.floor(Math.random() * 9)
+    let b = parseInt(`${a}5`)
+    return { problem: `${b} squared`, answer: b * b }
   }
 }
 
 async function generateAnswers(level, answer) {
   if (Levels[level].ruleId == 0) {
+    // add large two digit numbers
     let answerArray = [Math.floor(Math.random() * (2000 - 200) + 200), Math.floor(Math.random() * (2000 - 200) + 200), Math.floor(Math.random() * (2000 - 200) + 200), answer]
     return answerArray.sort((a, b) => a - b);
   } else if (Levels[level].ruleId == 1) {
-
+    // two digit number times 11
+    let answerArray = [Math.floor(Math.random() * (900 - 150) + 150), Math.floor(Math.random() * (900 - 150) + 150), Math.floor(Math.random() * (900 - 150) + 150), answer]
+    return answerArray.sort((a, b) => a - b);
+  } else if (Levels[level].ruleId == 2) {
+    // square a two digit number that ends in a 5
+    let answerArray = [Math.floor(Math.random() * (9025 - 225) + 225), Math.floor(Math.random() * (9025 - 225) + 225), Math.floor(Math.random() * (9025 - 225) + 225), answer]
+    return answerArray.sort((a, b) => a - b);
   }
 }
 
