@@ -92,9 +92,11 @@ async function renderProblemPage(level) {
     if(e.target.innerText == problem.answer) {
       // hooray!
       $('#hooray').removeClass('hide')
+      $(e.target).addClass('correct')
 
       setTimeout(function(){
         $('#hooray').addClass('hide')
+        $(e.target).removeClass('correct')
         // up the score by one
         score++
         // if (score < 3) go to the next question

@@ -41,6 +41,10 @@ body {
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
+.correct {
+  background-color: #39dca9;
+}
+
 #dropdown-content {
   display: none;
 }
