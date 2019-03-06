@@ -50,7 +50,11 @@ async function renderHomePage() {
     let optionsHTML = Levels.map((rule, i) => `<div id="dropdown-rule-${i}">${i + 1}: ${rule.ruleName}</div>`)
     $('#dropdown-content').html(optionsHTML)
 
-    // handle dropdown objects TODO
+    // handle dropdown objects
+    $('#dropdown-content div').on('click', (e) => {
+      level = parseInt(e.target.innerText.split(":")[0])
+      renderLevelPage(level)
+    })
 
     // handle getStartedButton
     $('#get-started-button').on('click', () => {

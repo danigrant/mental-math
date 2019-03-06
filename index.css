@@ -1,9 +1,23 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .hide {
   display: none !important;
 }
 
 .button {
   transition: 0.3s;
+  padding: 1em;
+  text-align: center;
+  width: 150px;
+  border-radius: 10px;
+  background-color: #9174ff;
+  color: white;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .button:hover {
@@ -25,11 +39,55 @@
   display: none;
 }
 
-#dropdown-content div:hover {background-color: #ddd;}
+#dropdown-content div:hover {
+  background-color: #ececec;
+  border-radius: 2px;
+}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover #dropdown-content {display: block;}
 
 .greyedOut {
   background-color: #ccc;
+}
+
+#home-page h1 {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20%;
+}
+
+#get-started-button {
+
+}
+
+.dropdown {
+  padding: 1em;
+  text-align: center;
+  width: 150px;
+  border-radius: 10px;
+  color: #ccc;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 3px solid #ccc;
+}
+
+.dropdown:hover, .dropdown:active {
+  color: black;
+  border-color: black;
+}
+
+#dropdown-content div {
+  padding: 0.5em;
+  margin: 0.5em;
+  font-weight: normal;
+  text-align: left;
+  color: black;
+}
+
+#dropdown-rule-0 {
+  border-top: 3px solid black;
+  margin-top: 1em;
 }
